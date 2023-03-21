@@ -88,8 +88,8 @@ class SchoolsDataViewHolder(
     fun schoolDataBinding(schoolsDataAdapter: SchoolsDataAdapter){
         binding.rvSchoolsData.apply {
             adapter = schoolsDataAdapter
-            layoutManager = GridLayoutManager(itemView.context,2)
-//            layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.VERTICAL, false)
+//            layoutManager = GridLayoutManager(itemView.context,2)
+            layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.VERTICAL, false)
         }
     }
 }
