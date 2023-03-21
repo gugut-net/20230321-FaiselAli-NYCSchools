@@ -51,7 +51,7 @@ class SchoolsRepositoryImpl @Inject constructor(
             }else throw FailureResponseException(response.errorBody()?.string())
         }catch (e: Exception){
             emit(UIState.ERROR(e))
-            Log.e(TAG, "getAllSchools: ${e.localizedMessage}", e)
+//            Log.e(TAG, "getAllSchools: ${e.localizedMessage}", e)
         }
     }
 
@@ -71,7 +71,7 @@ class SchoolsRepositoryImpl @Inject constructor(
             }
         }catch (e: Exception){
             emit(UIState.ERROR(e))
-            Log.e(TAG, "getAllSatResults: ${e.localizedMessage}", e)
+//            Log.e(TAG, "getAllSatResults: ${e.localizedMessage}", e)
         }
     }
 

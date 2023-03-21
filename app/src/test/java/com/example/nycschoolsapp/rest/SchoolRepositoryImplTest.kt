@@ -144,37 +144,37 @@ class SchoolRepositoryImplTest {
         }
         job.cancel()
     }
-//    @Test
-//    fun `get all schools response is error returns error state`() = runTest {
-//
-//        mockkStatic(Log::class)
-//        every { Log.e(any(), any()) } returns 0
-//        /**
-//         * ASSIGNMENT
-//         */
-//        coEvery {
-//            mockServiceApi.getSchools()
-//        } returns mockk() {
-//            every { isSuccessful } returns true
-//                every { body() } returns null
-//        }
-//        val states = mutableListOf<UIState<List<SchoolInfoResponse>>>()
-//
-//        /**
-//         * Action
-//         */
-//        testUnitObject.getAllSchools().collect {
-//            states.add(it)
-//        }
-//        /**
-//         * Assertion
-//         */
-//        assertThat(states).hasSize(2)
-//        assertThat(states.first()).isInstanceOf(UIState.LOADING::class.java)
-//        assertThat(states[1]).isInstanceOf(UIState.ERROR::class.java)
-//
-//        assertThat((states[1] as UIState.ERROR).error.localizedMessage).isEqualTo("Schools are null")
-//    }
+    @Test
+    fun `get all SCHOOLS response is error returns error state`() = runTest {
+
+        mockkStatic(Log::class)
+        every { Log.e(any(), any()) } returns 0
+        /**
+         * ASSIGNMENT
+         */
+        coEvery {
+            mockServiceApi.getSchools()
+        } returns mockk() {
+            every { isSuccessful } returns true
+                every { body() } returns null
+        }
+        val states = mutableListOf<UIState<List<SchoolInfoResponse>>>()
+
+        /**
+         * Action
+         */
+        testUnitObject.getAllSchools().collect {
+            states.add(it)
+        }
+        /**
+         * Assertion
+         */
+        assertThat(states).hasSize(2)
+        assertThat(states.first()).isInstanceOf(UIState.LOADING::class.java)
+        assertThat(states[1]).isInstanceOf(UIState.ERROR::class.java)
+
+        assertThat((states[1] as UIState.ERROR).error.localizedMessage).isEqualTo("Schools Response is Null")
+    }
 
     /**
      * Loading sate for SAT scores
@@ -250,38 +250,38 @@ class SchoolRepositoryImplTest {
      * Error sate for SAT scores
      * FAIL
      */
-//    @Test
-//    fun `get all SAT response is error returns error state`() = runTest {
-//        mockkStatic(Log::class)
-//        every { Log.e(any(), any()) } returns 0
-//        /**
-//         * ASSIGNMENT
-//         */
-//        coEvery {
-//            mockServiceApi.getSatResults()
-//        } returns mockk() {
-//            every { isSuccessful } returns true
-//            every { body() } returns null
-//        }
-//        val states = mutableListOf<UIState<List<SatResultsResponse>>>()
-//
-//        /**
-//         * ACTION
-//         */
-//        testUnitObject.getAllSatResults().collect {
-//            states.add(it)
-//        }
-//
-//        /**
-//         * ASSERTION
-//         */
-//        assertThat(states).hasSize(2)
-//        assertThat(states.first()).isInstanceOf(UIState.LOADING::class.java)
-//        assertThat(states[1]).isInstanceOf(UIState.ERROR::class.java)
-//
-//        assertThat((states[1] as UIState.ERROR).error.localizedMessage).isEqualTo("SAT Response is Null")
-//
-//    }
+    @Test
+    fun `get all SAT score response is error returns error state`() = runTest {
+        mockkStatic(Log::class)
+        every { Log.e(any(), any()) } returns 0
+        /**
+         * ASSIGNMENT
+         */
+        coEvery {
+            mockServiceApi.getSatResults()
+        } returns mockk() {
+            every { isSuccessful } returns true
+            every { body() } returns null
+        }
+        val states = mutableListOf<UIState<List<SatResultsResponse>>>()
+
+        /**
+         * ACTION
+         */
+        testUnitObject.getAllSatResults().collect {
+            states.add(it)
+        }
+
+        /**
+         * ASSERTION
+         */
+        assertThat(states).hasSize(2)
+        assertThat(states.first()).isInstanceOf(UIState.LOADING::class.java)
+        assertThat(states[1]).isInstanceOf(UIState.ERROR::class.java)
+
+        assertThat((states[1] as UIState.ERROR).error.localizedMessage).isEqualTo("SAT Response is Null")
+
+    }
 
     @Test
     fun `get all SAT response is error returns error state`() {
