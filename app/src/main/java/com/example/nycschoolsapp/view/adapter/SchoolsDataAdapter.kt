@@ -16,7 +16,6 @@ class SchoolsDataAdapter(
     private val onClickedSchool: (String) -> Unit
 ): RecyclerView.Adapter<SchoolViewHolder>() {
 
-
     fun updateSchools(newSchools: List<SchoolInfoResponse>){
         if(schoolsList != newSchools){
             schoolsList.addAll(newSchools)
