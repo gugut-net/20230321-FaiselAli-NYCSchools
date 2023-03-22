@@ -2,7 +2,7 @@ package com.example.nycschoolsapp.di
 
 import com.example.nycschools.di.RepositoryModule
 import com.example.nycschoolsapp.MainActivity
-import com.example.nycschools.utils.BaseFragment
+import com.example.nycschoolsapp.utils.BaseFragment
 import dagger.Component
 
 /**

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nycschoolsapp.model.SchoolInfoResponse
 import com.example.nycschoolsapp.utils.ViewType
 import com.example.nycschoolsapp.databinding.LetterHolderBinding
+import com.example.nycschoolsapp.databinding.SchoolInformationBinding
 import com.example.nycschoolsapp.databinding.SchoolsDataHolderBinding
 
 /**
@@ -21,26 +22,14 @@ class SchoolInformationAdapter(
 
     fun updateSchools(newSchools: List<SchoolInfoResponse>){
         var tempChar = '+'
-        val schoolListTemp: MutableList<SchoolInfoResponse> = mutableListOf()
-        val schoolsDataAdapter: MutableList<SchoolsDataAdapter> = mutableListOf()
-        var i = 0
         newSchools.sortedBy { it.schoolName }.forEach { school ->
             val firstLetter = school.schoolName?.first() ?: '+'
-            if(firstLetter != tempChar){
-                if(schoolListTemp.size>0){
-                    val schoolsDataAdapterTemp = SchoolsDataAdapter(mutableListOf(), onClickedSchool)
-                    schoolsDataAdapter.add(schoolsDataAdapterTemp)
-                    schoolsDataAdapter[i].updateSchools(schoolListTemp)
-                    schoolsInfo.add(ViewType.SCHOOLS_DATA(schoolsDataAdapter[i]))
-                    i++
-                    schoolListTemp.clear()
-                }
+            if(firstLetter != tempChar) {
                 schoolsInfo.add(ViewType.LETTER(firstLetter.toString()))
                 tempChar = firstLetter
             }
-            schoolListTemp.add(school)
+            schoolsInfo.add(ViewType.SCHOOLS_DATA(school))
         }
-        schoolListTemp.clear()
         notifyDataSetChanged()
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -51,8 +40,8 @@ class SchoolInformationAdapter(
                 )
             )
         } else{
-            SchoolsDataViewHolder(
-                SchoolsDataHolderBinding.inflate(
+            SchoolViewHolder(
+                SchoolInformationBinding.inflate(
                     LayoutInflater.from(parent.context),parent,false
                 )
             )
@@ -67,7 +56,7 @@ class SchoolInformationAdapter(
                 (holder as LetterViewHolder).letterDataBinding(item.letter)
             }
             is ViewType.SCHOOLS_DATA -> {
-                (holder as SchoolsDataViewHolder).schoolDataBinding(item.schoolsData)
+                (holder as SchoolViewHolder).schoolBinding(item.schoolsData, onClickedSchool)
             }
         }
     }
@@ -79,19 +68,6 @@ class SchoolInformationAdapter(
         }
     }
 
-}
-
-class SchoolsDataViewHolder(
-    private val binding: SchoolsDataHolderBinding
-): RecyclerView.ViewHolder(binding.root){
-
-    fun schoolDataBinding(schoolsDataAdapter: SchoolsDataAdapter){
-        binding.rvSchoolsData.apply {
-            adapter = schoolsDataAdapter
-//            layoutManager = GridLayoutManager(itemView.context,2)
-            layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.VERTICAL, false)
-        }
-    }
 }
 
 class LetterViewHolder(

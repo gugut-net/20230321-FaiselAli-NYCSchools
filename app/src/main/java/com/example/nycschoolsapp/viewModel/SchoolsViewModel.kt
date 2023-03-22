@@ -19,15 +19,13 @@ class SchoolsViewModel(
     /**
      * backing schools LiveData
      */
-    private val _schoolsInfo: MutableLiveData<UIState<List<SchoolInfoResponse>>> = MutableLiveData(
-        UIState.LOADING)
+    private val _schoolsInfo: MutableLiveData<UIState<List<SchoolInfoResponse>>> = MutableLiveData(UIState.LOADING)
     val schoolsInfo: LiveData<UIState<List<SchoolInfoResponse>>> get() = _schoolsInfo
 
     /**
      * backing sat results LiveData
      */
-    private val _satResults: MutableLiveData<UIState<List<SatResultsResponse>>> = MutableLiveData(
-        UIState.LOADING)
+    private val _satResults: MutableLiveData<UIState<List<SatResultsResponse>>> = MutableLiveData(UIState.LOADING)
     val satResults: LiveData<UIState<List<SatResultsResponse>>> get() = _satResults
 
     private val _itemSelected: MutableLiveData<String> = MutableLiveData("")
@@ -54,7 +52,6 @@ class SchoolsViewModel(
         getSchools()
         getSatResults()
     }
-
 
     /**
      * Method for getting the SAT Results List

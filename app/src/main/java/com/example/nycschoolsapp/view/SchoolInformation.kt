@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nycschoolsapp.model.SchoolInfoResponse
-import com.example.nycschools.utils.BaseFragment
+import com.example.nycschoolsapp.utils.BaseFragment
 import com.example.nycschoolsapp.utils.UIState
 import com.example.nycschoolsapp.view.adapter.SchoolInformationAdapter
 import com.example.nycschoolsapp.R

@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.nycschoolsapp.model.SatResultsResponse
 import com.example.nycschoolsapp.model.SchoolInfoResponse
-import com.example.nycschools.utils.BaseFragment
+import com.example.nycschoolsapp.utils.BaseFragment
 import com.example.nycschoolsapp.databinding.FragmentSchoolDetailsBinding
 
 /**
